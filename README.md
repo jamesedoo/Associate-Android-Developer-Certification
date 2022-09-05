@@ -1,10 +1,18 @@
-# Associate-Android-Developer-Certification
+# Associate Android Developer Certification Cheat Sheet
 Associate Android Developer Certification Cheat Sheet
 
-Study Guide：https://developers.google.com/training/certification/associate-android-developer/study-guide/
+## Project Reference
+1. [LemonadeApp](https://developer.android.com/codelabs/basic-android-kotlin-training-project-lemonade?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-four%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-project-lemonade#3)
+2. [DogglersApp](https://developer.android.com/codelabs/basic-android-kotlin-training-project-dogglers-app?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-2-pathway-3%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-project-dogglers-app#2)
+3. [LunchTray](https://developer.android.com/codelabs/basic-android-kotlin-training-project-lunch-tray?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-3-pathway-5%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-project-lunch-tray#2)
+4. [Amphibians](https://developer.android.com/codelabs/basic-android-kotlin-training-project-amphibians?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-4-pathway-2%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-project-amphibians#2)
+5. [ForageApp](https://developer.android.com/codelabs/basic-android-kotlin-training-project-forage?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-5-pathway-2%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-project-forage#3)
+6. [WaterMe](https://developer.android.com/codelabs/basic-android-kotlin-training-project-water-me?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-6-pathway-1%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-project-water-me#3)
 
-# Topics:
+## Study Guide
+https://developers.google.com/training/certification/associate-android-developer/study-guide/
 
+## Topics List
 - [Associate Android Developer Certification](#associate-android-developer-certification)
 	- [1. Android Core:](#1-android-core)
 		- [1.1 Understand the architecture of the Android system](#11-understand-the-architecture-of-the-android-system)
@@ -24,6 +32,8 @@ Study Guide：https://developers.google.com/training/certification/associate-and
 			- [1.7.1 CodeLab](#171-codelab)
 	- [2. User Interface:](#2-user-interface)
 		- [2.1 Understand the Android activity lifecycle](#21-understand-the-android-activity-lifecycle)
+			- [2.1.1 Activity lifecycle](#211-activity-lifecycle)
+			- [2.1.2 Fragment lifecycle](#212-fragment-lifecycle)
 		- [2.2 Be able to create an Activity that displays a Layout](#22-be-able-to-create-an-activity-that-displays-a-layout)
 		- [2.3 Be able to construct a UI with ConstraintLayout](#23-be-able-to-construct-a-ui-with-constraintlayout)
 		- [2.4 Understand how to create a custom View class and add it to a Layout](#24-understand-how-to-create-a-custom-view-class-and-add-it-to-a-layout)
@@ -47,18 +57,19 @@ Study Guide：https://developers.google.com/training/certification/associate-and
 		- [5.1 Espresso:](#51-espresso)
 		- [5.2 UI Automator:](#52-ui-automator)
 		- [5.3 JUnit:](#53-junit)
+		
+## Topic Descriptions
+### 1. Android Core:
 
-## 1. Android Core:
+#### [1.1 Understand the architecture of the Android system](https://developer.android.com/guide/components/fundamentals)
 
-### [1.1 Understand the architecture of the Android system](https://developer.android.com/guide/components/fundamentals)
+#### [1.2 Be able to describe the basic building blocks of an Android app](https://developer.android.com/guide/components/fundamentals)
 
-### [1.2 Be able to describe the basic building blocks of an Android app](https://developer.android.com/guide/components/fundamentals)
+#### [1.3 Know how to build and run an Android app](https://developer.android.com/guide/components/fundamentals)
 
-### [1.3 Know how to build and run an Android app](https://developer.android.com/guide/components/fundamentals)
+#### 1.4 Display simple messages in a popup using a Toast or a Snackbar
 
-### 1.4 Display simple messages in a popup using a Toast or a Snackbar
-
-#### [1.4.1 Toast](https://developer.android.com/guide/topics/ui/notifiers/toasts):
+##### [1.4.1 Toast](https://developer.android.com/guide/topics/ui/notifiers/toasts):
 
 ```kotlin
 val text = "Hello toast!"
@@ -68,7 +79,7 @@ val toast = Toast.makeText(applicationContext, text, duration)
 toast.show()
 ```
 
-#### [1.4.2 Snackbar](https://developer.android.com/develop/ui/views/notifications/snackbar/showing):
+##### [1.4.2 Snackbar](https://developer.android.com/develop/ui/views/notifications/snackbar/showing):
 
 ```kotlin
 Snackbar.make(
@@ -80,7 +91,7 @@ Snackbar.make(
 
 
 
-### [1.5 Be able to display a message outside your app's UI using Notifications](https://developer.android.com/guide/topics/ui/notifiers/notifications)
+#### [1.5 Be able to display a message outside your app's UI using Notifications](https://developer.android.com/guide/topics/ui/notifiers/notifications)
 
 ```
 dependencies {
@@ -88,7 +99,7 @@ dependencies {
 }
 ```
 
-#### 1.5.1 Create Channel:
+##### 1.5.1 Create Channel:
 
 ```java
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -104,7 +115,7 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 }
 ```
 
-#### 1.5.2 Builder:
+##### 1.5.2 Builder:
 
 ```java
 NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
@@ -113,7 +124,7 @@ NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNE
         .setContentText(textContent)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 ```
-#### 1.5.3 Show:
+##### 1.5.3 Show:
 
 ```java
 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
@@ -123,15 +134,15 @@ notificationManager.notify(notificationId, builder.build());
 ```
 
 
-### 1.6 Understand how to localize an app
+#### 1.6 Understand how to localize an app
 
-#### [1.6.1 Doc](https://developer.android.com/guide/topics/resources/localization)
+##### [1.6.1 Doc](https://developer.android.com/guide/topics/resources/localization)
 
-#### [1.6.2 Codelab](https://codelabs.developers.google.com/codelabs/advanced-android-training-use-locale/index.html#0)
+##### [1.6.2 Codelab](https://codelabs.developers.google.com/codelabs/advanced-android-training-use-locale/index.html#0)
 
-### 1.7 Be able to schedule a background task using JobScheduler
+#### 1.7 Be able to schedule a background task using JobScheduler
 
-#### [1.7.1 CodeLab](https://codelabs.developers.google.com/codelabs/android-training-job-scheduler/index.html)
+##### [1.7.1 CodeLab](https://codelabs.developers.google.com/codelabs/android-training-job-scheduler/index.html)
 
 ```xml
 <service
@@ -194,23 +205,23 @@ if (mScheduler!=null){
 }
 ```
 
-## 2. User interface:
+### 2. User interface:
 
-### 2.1 Understand the Android activity lifecycle
+#### 2.1 Understand the Android activity lifecycle
 
-Activity life cycle:
+##### 2.1.1 Activity lifecycle
 
 ![lifecycle](https://developer.android.com/guide/components/images/activity_lifecycle.png)
 
-Fragment life cycle:
+##### 2.1.2 Fragment lifecycle
 
 ![](https://developer.android.com/images/fragment_lifecycle.png)
 
-### 2.2 Be able to create an Activity that displays a Layout
+#### 2.2 Be able to create an Activity that displays a Layout
 
-### [2.3 Be able to construct a UI with ConstraintLayout](https://developer.android.com/training/constraint-layout/)
+#### [2.3 Be able to construct a UI with ConstraintLayout](https://developer.android.com/training/constraint-layout/)
 
-### [2.4 Understand how to create a custom View class and add it to a Layout](https://developer.android.com/guide/topics/ui/custom-components)
+#### [2.4 Understand how to create a custom View class and add it to a Layout](https://developer.android.com/guide/topics/ui/custom-components)
 
 [CodeLab](https://codelabs.developers.google.com/codelabs/advanced-android-training-custom-view-from-scratch/index.html)
 
@@ -307,13 +318,13 @@ if (attrs! = null) {
 
 
 
-### [2.5 Know how to implement a custom app theme](https://developer.android.com/guide/topics/ui/look-and-feel/themes)
+#### [2.5 Know how to implement a custom app theme](https://developer.android.com/guide/topics/ui/look-and-feel/themes)
 
 
 
 [CodeLab](https://codelabs.developers.google.com/codelabs/android-training-drawables-styles-and-themes/index.html)
 
-### [2.6 Be able to add accessibility hooks to a custom View](https://developer.android.com/guide/topics/ui/accessibility/custom-views)
+#### [2.6 Be able to add accessibility hooks to a custom View](https://developer.android.com/guide/topics/ui/accessibility/custom-views)
 
 ```java
 @Override
@@ -328,11 +339,11 @@ public boolean onKeyUp (int keyCode, KeyEvent event) {
 
 ```
 
-### 2.7 Know how to apply content descriptions to views for accessibility
+#### 2.7 Know how to apply content descriptions to views for accessibility
 
 关爱残障人士从我做起
 
-### [2.8 Understand how to display items in a RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview)
+#### [2.8 Understand how to display items in a RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview)
 
 Activity:
 
@@ -421,7 +432,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
 
-### 2.9 Be able to bind local data to a RecyclerView list using the Paging library
+#### 2.9 Be able to bind local data to a RecyclerView list using the Paging library
 
 ![](https://codelabs.developers.google.com/codelabs/android-paging/img/511a702ae4af43cd.png)
 
@@ -507,7 +518,7 @@ public class ConcertAdapter
 If the source is from Network or other sources, you should create and inherent the Datasource.class and Datasource.Factory.class yoruself
 
 
-### [2.10 Know how to implement menu-based navigation](https://developer.android.com/guide/topics/ui/menus)
+#### [2.10 Know how to implement menu-based navigation](https://developer.android.com/guide/topics/ui/menus)
 
 Menu item:
 ```xml
@@ -555,7 +566,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
 
 
-### [2.11 Understand how to implement drawer navigation](https://developer.android.com/training/implementing-navigation/nav-drawer)
+#### [2.11 Understand how to implement drawer navigation](https://developer.android.com/training/implementing-navigation/nav-drawer)
 
 ```
 dependencies {
@@ -677,13 +688,13 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## 3. Data Management:
+### 3. Data Management:
 
 [AppArchitecture](https://developer.android.com/jetpack/docs/guide)
 
 ![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
 
-### 3.1 Understand how to define data using Room entities
+#### 3.1 Understand how to define data using Room entities
 
 ```java
 @Entity(tableName = "word_table")
@@ -700,7 +711,7 @@ public class Word {
 }
 ```
 
-### 3.2 Be able to access Room database with data access object (DAO)
+#### 3.2 Be able to access Room database with data access object (DAO)
 
 Database:
 ```java
@@ -745,9 +756,9 @@ public interface WordDao {
 }
 ```
 
-### [3.3 Know how to observe and respond to changing data using LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+#### [3.3 Know how to observe and respond to changing data using LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 
-### 3.4 Understand how to use a Repository to mediate data operations
+#### 3.4 Understand how to use a Repository to mediate data operations
 
 ```java
 public class WordRepository {
@@ -786,9 +797,9 @@ public class WordRepository {
 }
 ```
 
-### [3.5 Be able to read and parse raw resources or asset files](https://www.google.com)
+#### [3.5 Be able to read and parse raw resources or asset files](https://www.google.com)
 
-### 3.6 Be able to create persistent Preference data from user input
+#### 3.6 Be able to create persistent Preference data from user input
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -836,7 +847,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-### 3.7 Understand how to change the behavior of the app based on user preferences
+#### 3.7 Understand how to change the behavior of the app based on user preferences
 
 AppSettings:
 
@@ -902,11 +913,11 @@ Boolean switchPref = sharedPref.getBoolean
            (SettingsActivity.KEY_PREF_EXAMPLE_SWITCH, false);
 ```
 
-## 4. Debugging:
+### 4. Debugging:
 
 略
 
-## [5. Testing](https://developer.android.com/training/testing/fundamentals)：
+### [5. Testing](https://developer.android.com/training/testing/fundamentals)：
 
 ![](https://developer.android.com/images/training/testing/testing-workflow.png)
 
@@ -914,7 +925,7 @@ Boolean switchPref = sharedPref.getBoolean
 
 
 
-### [5.1 Espresso](https://developer.android.com/training/testing/espresso):
+#### [5.1 Espresso](https://developer.android.com/training/testing/espresso):
 
 ![](https://developer.android.com/images/training/testing/espresso-cheatsheet.png)
 
@@ -962,11 +973,11 @@ dependencies {
 
 * [Web Basic](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/WebBasicSample/app/src/androidTest/java/com/example/android/testing/espresso/web/BasicSample/WebViewActivityTest.java)
 
-### 5.2 UI Automator:
+#### 5.2 UI Automator:
 
 https://github.com/googlesamples/android-testing/tree/master/ui/uiautomator/BasicSample
 
-### 5.3 JUnit:
+#### 5.3 JUnit:
 
 CheatSheet: https://www.roguewave.com/sites/rw/files/resources/junit-cheat-sheet_0.pdf
 
@@ -975,9 +986,3 @@ mockito: https://www.jianshu.com/p/a3b59fad17e6
 * [Basic](https://github.com/googlesamples/android-testing/tree/master/unit/BasicSample/app/src/test/java/com/example/android/testing/unittesting/BasicSample)
 
 * [Service](https://github.com/googlesamples/android-testing/blob/master/integration/ServiceTestRuleSample/app/src/androidTest/java/com/example/android/testing/ServiceTestRuleSample/LocalServiceTest.java)
-
-
-
-
-
-
