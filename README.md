@@ -8,8 +8,6 @@ Study Guide：https://developers.google.com/training/certification/associate-and
 - [Associate Android Developer Certification](#associate-android-developer-certification)
 	- [1. Android Core:](#1-android-core)
 		- [1.1 Understand the architecture of the Android system](#11-understand-the-architecture-of-the-android-system)
-			- [1.1.1 Android Basics](#111-android-basics)
-			- [1.1.2 Four app components:](#112-four-app-components)
 		- [1.2 Be able to describe the basic building blocks of an Android app](#12-be-able-to-describe-the-basic-building-blocks-of-an-android-app)
 		- [1.3 Know how to build and run an Android app](#13-know-how-to-build-and-run-an-android-app)
 		- [1.4 Display simple messages in a popup using a Toast or a Snackbar](#14-display-simple-messages-in-a-popup-using-a-toast-or-a-snackbar)
@@ -52,253 +50,32 @@ Study Guide：https://developers.google.com/training/certification/associate-and
 
 ## 1. Android Core:
 
-### 1.1 Understand the architecture of the Android system
+### [1.1 Understand the architecture of the Android system](https://developer.android.com/guide/components/fundamentals)
 
-#### [1.1.1 Android Basics](https://developer.android.com/guide/components/fundamentals)
+### [1.2 Be able to describe the basic building blocks of an Android app](https://developer.android.com/guide/components/fundamentals)
 
-#### 1.1.2 Four app components:
-
-* [Activities](https://developer.android.com/guide/components/activities/intro-activities)
-
-Activity life cycle:
-
-![lifecycle](https://developer.android.com/guide/components/images/activity_lifecycle.png)
-
-Fragment life cycle:
-
-![](https://developer.android.com/images/fragment_lifecycle.png)
-
-* [Services](https://developer.android.com/reference/android/app/Service)
-
-A Service itself is actually very simple, providing two main features:
-
-A facility for the application to tell the system about something it wants to be doing in the background (even when the user is not directly interacting with the application). This corresponds to calls to `Context.startService()`, which ask the system to schedule work for the service, to be run until the service or someone else explicitly stop it.
-
-A facility for an application to expose some of its functionality to other applications. This corresponds to calls to` Context.bindService()`, which allows a long-standing connection to be made to the service in order to interact with it.
-
-* [BroadcastReveivers](https://developer.android.com/guide/components/broadcasts#system-broadcasts)
-
-* [ContentProviders](https://developer.android.com/guide/topics/providers/content-providers)
-
-[Room with content provider example](https://github.com/googlesamples/android-architecture-components/tree/master/PersistenceContentProviderSample)
-
-```xml
-<provider
-    android:name=".provider.SampleContentProvider"
-    android:authorities="com.example.android.contentprovidersample.provider"
-    android:exported="true"
-    android:permission="com.example.android.contentprovidersample.provider.READ_WRITE"/>
-```
-```java
-/**
- * A {@link ContentProvider} based on a Room database.
- *
- * <p>Note that you don't need to implement a ContentProvider unless you want to expose the data
- * outside your process or your application already uses a ContentProvider.</p>
- */
-public class SampleContentProvider extends ContentProvider {
-
-    /** The authority of this content provider. */
-    public static final String AUTHORITY = "com.example.android.contentprovidersample.provider";
-
-    /** The URI for the Cheese table. */
-    public static final Uri URI_CHEESE = Uri.parse(
-            "content://" + AUTHORITY + "/" + Cheese.TABLE_NAME);
-
-    /** The match code for some items in the Cheese table. */
-    private static final int CODE_CHEESE_DIR = 1;
-
-    /** The match code for an item in the Cheese table. */
-    private static final int CODE_CHEESE_ITEM = 2;
-
-    /** The URI matcher. */
-    private static final UriMatcher MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
-
-    static {
-        MATCHER.addURI(AUTHORITY, Cheese.TABLE_NAME, CODE_CHEESE_DIR);
-        MATCHER.addURI(AUTHORITY, Cheese.TABLE_NAME + "/*", CODE_CHEESE_ITEM);
-    }
-
-    @Override
-    public boolean onCreate() {
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection,
-            @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        final int code = MATCHER.match(uri);
-        if (code == CODE_CHEESE_DIR || code == CODE_CHEESE_ITEM) {
-            final Context context = getContext();
-            if (context == null) {
-                return null;
-            }
-            CheeseDao cheese = SampleDatabase.getInstance(context).cheese();
-            final Cursor cursor;
-            if (code == CODE_CHEESE_DIR) {
-                cursor = cheese.selectAll();
-            } else {
-                cursor = cheese.selectById(ContentUris.parseId(uri));
-            }
-            cursor.setNotificationUri(context.getContentResolver(), uri);
-            return cursor;
-        } else {
-            throw new IllegalArgumentException("Unknown URI: " + uri);
-        }
-    }
-
-    @Nullable
-    @Override
-    public String getType(@NonNull Uri uri) {
-        switch (MATCHER.match(uri)) {
-            case CODE_CHEESE_DIR:
-                return "vnd.android.cursor.dir/" + AUTHORITY + "." + Cheese.TABLE_NAME;
-            case CODE_CHEESE_ITEM:
-                return "vnd.android.cursor.item/" + AUTHORITY + "." + Cheese.TABLE_NAME;
-            default:
-                throw new IllegalArgumentException("Unknown URI: " + uri);
-        }
-    }
-
-    @Nullable
-    @Override
-    public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        switch (MATCHER.match(uri)) {
-            case CODE_CHEESE_DIR:
-                final Context context = getContext();
-                if (context == null) {
-                    return null;
-                }
-                final long id = SampleDatabase.getInstance(context).cheese()
-                        .insert(Cheese.fromContentValues(values));
-                context.getContentResolver().notifyChange(uri, null);
-                return ContentUris.withAppendedId(uri, id);
-            case CODE_CHEESE_ITEM:
-                throw new IllegalArgumentException("Invalid URI, cannot insert with ID: " + uri);
-            default:
-                throw new IllegalArgumentException("Unknown URI: " + uri);
-        }
-    }
-
-    @Override
-    public int delete(@NonNull Uri uri, @Nullable String selection,
-            @Nullable String[] selectionArgs) {
-        switch (MATCHER.match(uri)) {
-            case CODE_CHEESE_DIR:
-                throw new IllegalArgumentException("Invalid URI, cannot update without ID" + uri);
-            case CODE_CHEESE_ITEM:
-                final Context context = getContext();
-                if (context == null) {
-                    return 0;
-                }
-                final int count = SampleDatabase.getInstance(context).cheese()
-                        .deleteById(ContentUris.parseId(uri));
-                context.getContentResolver().notifyChange(uri, null);
-                return count;
-            default:
-                throw new IllegalArgumentException("Unknown URI: " + uri);
-        }
-    }
-
-    @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection,
-            @Nullable String[] selectionArgs) {
-        switch (MATCHER.match(uri)) {
-            case CODE_CHEESE_DIR:
-                throw new IllegalArgumentException("Invalid URI, cannot update without ID" + uri);
-            case CODE_CHEESE_ITEM:
-                final Context context = getContext();
-                if (context == null) {
-                    return 0;
-                }
-                final Cheese cheese = Cheese.fromContentValues(values);
-                cheese.id = ContentUris.parseId(uri);
-                final int count = SampleDatabase.getInstance(context).cheese()
-                        .update(cheese);
-                context.getContentResolver().notifyChange(uri, null);
-                return count;
-            default:
-                throw new IllegalArgumentException("Unknown URI: " + uri);
-        }
-    }
-
-    @NonNull
-    @Override
-    public ContentProviderResult[] applyBatch(
-            @NonNull ArrayList<ContentProviderOperation> operations)
-            throws OperationApplicationException {
-        final Context context = getContext();
-        if (context == null) {
-            return new ContentProviderResult[0];
-        }
-        final SampleDatabase database = SampleDatabase.getInstance(context);
-        database.beginTransaction();
-        try {
-            final ContentProviderResult[] result = super.applyBatch(operations);
-            database.setTransactionSuccessful();
-            return result;
-        } finally {
-            database.endTransaction();
-        }
-    }
-
-    @Override
-    public int bulkInsert(@NonNull Uri uri, @NonNull ContentValues[] valuesArray) {
-        switch (MATCHER.match(uri)) {
-            case CODE_CHEESE_DIR:
-                final Context context = getContext();
-                if (context == null) {
-                    return 0;
-                }
-                final SampleDatabase database = SampleDatabase.getInstance(context);
-                final Cheese[] cheeses = new Cheese[valuesArray.length];
-                for (int i = 0; i < valuesArray.length; i++) {
-                    cheeses[i] = Cheese.fromContentValues(valuesArray[i]);
-                }
-                return database.cheese().insertAll(cheeses).length;
-            case CODE_CHEESE_ITEM:
-                throw new IllegalArgumentException("Invalid URI, cannot insert with ID: " + uri);
-            default:
-                throw new IllegalArgumentException("Unknown URI: " + uri);
-        }
-    }
-
-}
-```
-
-Unlike activities, services, and broadcast receivers, content providers are not activated by intents. Rather, they are activated when targeted by a request from a ContentResolver.
-
-### 1.2 Be able to describe the basic building blocks of an Android app
-
-* [App components](https://developer.android.com/guide/components/fundamentals#Components)
-
-* [Manifest.xml](https://developer.android.com/guide/components/fundamentals#Manifest)
-
-* [App resources](https://developer.android.com/guide/components/fundamentals#Resources)
-
-### [1.3 Know how to build and run an Android app](https://developer.android.com/training/basics/firstapp/creating-project)
+### [1.3 Know how to build and run an Android app](https://developer.android.com/guide/components/fundamentals)
 
 ### 1.4 Display simple messages in a popup using a Toast or a Snackbar
 
 #### [1.4.1 Toast](https://developer.android.com/guide/topics/ui/notifiers/toasts):
 
-```java
-Context context = getApplicationContext();
-CharSequence text = "Hello toast!";
-int duration = Toast.LENGTH_SHORT;
+```kotlin
+val text = "Hello toast!"
+val duration = Toast.LENGTH_SHORT
 
-Toast toast = Toast.makeText(context, text, duration);
-toast.show();
+val toast = Toast.makeText(applicationContext, text, duration)
+toast.show()
 ```
 
-#### [1.4.2 Snackbar](https://developer.android.com/reference/android/support/design/widget/Snackbar):
+#### [1.4.2 Snackbar](https://developer.android.com/develop/ui/views/notifications/snackbar/showing):
 
-```java
-Snackbar mySnackbar = Snackbar.make(findViewById(R.id.myCoordinatorLayout),
-                                R.string.email_archived, Snackbar.LENGTH_SHORT);
-mySnackbar.setAction(R.string.undo_string, new MyUndoListener());
-mySnackbar.show();
+```kotlin
+Snackbar.make(
+        findViewById(R.id.myCoordinatorLayout),
+        R.string.email_sent,
+        Snackbar.LENGTH_SHORT
+).show()
 ```
 
 
@@ -420,6 +197,14 @@ if (mScheduler!=null){
 ## 2. User interface:
 
 ### 2.1 Understand the Android activity lifecycle
+
+Activity life cycle:
+
+![lifecycle](https://developer.android.com/guide/components/images/activity_lifecycle.png)
+
+Fragment life cycle:
+
+![](https://developer.android.com/images/fragment_lifecycle.png)
 
 ### 2.2 Be able to create an Activity that displays a Layout
 
