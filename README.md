@@ -1,9 +1,9 @@
 # Associate-Android-Developer-Certification
 Associate Android Developer Certification Cheat Sheet
 
-Source ：https://developers.google.com/training/certification/associate-android-developer/study-guide/
+Study Guide：https://developers.google.com/training/certification/associate-android-developer/study-guide/
 
-# Table of Contents:
+# Topics:
 
 - [Associate Android Developer Certification](#associate-android-developer-certification)
 	- [1. Android Core:](#1-android-core)
@@ -24,31 +24,31 @@ Source ：https://developers.google.com/training/certification/associate-android
 			- [1.6.2 Codelab](#162-codelab)
 		- [1.7 Be able to schedule a background task using JobScheduler](#17-be-able-to-schedule-a-background-task-using-jobscheduler)
 			- [1.7.1 CodeLab](#171-codelab)
-	- [User interface:](#user-interface)
-		- [Understand the Android activity lifecycle](#understand-the-android-activity-lifecycle)
-		- [Be able to create an Activity that displays a Layout](#be-able-to-create-an-activity-that-displays-a-layout)
-		- [Be able to construct a UI with ConstraintLayout](#be-able-to-construct-a-ui-with-constraintlayout)
-		- [Understand how to create a custom View class and add it to a Layout](#understand-how-to-create-a-custom-view-class-and-add-it-to-a-layout)
-		- [Know how to implement a custom app theme](#know-how-to-implement-a-custom-app-theme)
-		- [Be able to add accessibility hooks to a custom View](#be-able-to-add-accessibility-hooks-to-a-custom-view)
-		- [Know how to apply content descriptions to views for accessibility](#know-how-to-apply-content-descriptions-to-views-for-accessibility)
-		- [Understand how to display items in a RecyclerView](#understand-how-to-display-items-in-a-recyclerview)
-		- [Be able to bind local data to a RecyclerView list using the Paging library](#be-able-to-bind-local-data-to-a-recyclerview-list-using-the-paging-library)
-		- [Know how to implement menu-based navigation](#know-how-to-implement-menu-based-navigation)
-		- [Understand how to implement drawer navigation](#understand-how-to-implement-drawer-navigation)
-	- [DataManagement:](#datamanagement)
-		- [Understand how to define data using Room entities](#understand-how-to-define-data-using-room-entities)
-		- [Be able to access Room database with data access object (DAO)](#be-able-to-access-room-database-with-data-access-object-dao)
-		- [Know how to observe and respond to changing data using LiveData](#know-how-to-observe-and-respond-to-changing-data-using-livedata)
-		- [Understand how to use a Repository to mediate data operations](#understand-how-to-use-a-repository-to-mediate-data-operations)
-		- [Be able to read and parse raw resources or asset files](#be-able-to-read-and-parse-raw-resources-or-asset-files)
-		- [Be able to create persistent Preference data from user input](#be-able-to-create-persistent-preference-data-from-user-input)
-		- [Understand how to change the behavior of the app based on user preferences](#understand-how-to-change-the-behavior-of-the-app-based-on-user-preferences)
-	- [Debugging:](#debugging)
-	- [Testing：](#testing)
-		- [Espresso:](#espresso)
-		- [UI Automator:](#ui-automator)
-		- [JUnit:](#junit)
+	- [2. User Interface:](#2-user-interface)
+		- [2.1 Understand the Android activity lifecycle](#21-understand-the-android-activity-lifecycle)
+		- [2.2 Be able to create an Activity that displays a Layout](#22-be-able-to-create-an-activity-that-displays-a-layout)
+		- [2.3 Be able to construct a UI with ConstraintLayout](#23-be-able-to-construct-a-ui-with-constraintlayout)
+		- [2.4 Understand how to create a custom View class and add it to a Layout](#24-understand-how-to-create-a-custom-view-class-and-add-it-to-a-layout)
+		- [2.5 Know how to implement a custom app theme](#25-know-how-to-implement-a-custom-app-theme)
+		- [2.6 Be able to add accessibility hooks to a custom View](#26-be-able-to-add-accessibility-hooks-to-a-custom-view)
+		- [2.7 Know how to apply content descriptions to views for accessibility](#27-know-how-to-apply-content-descriptions-to-views-for-accessibility)
+		- [2.8 Understand how to display items in a RecyclerView](#28-understand-how-to-display-items-in-a-recyclerview)
+		- [2.9 Be able to bind local data to a RecyclerView list using the Paging library](#29-be-able-to-bind-local-data-to-a-recyclerview-list-using-the-paging-library)
+		- [2.10 Know how to implement menu-based navigation](#210-know-how-to-implement-menu-based-navigation)
+		- [2.11 Understand how to implement drawer navigation](#211-understand-how-to-implement-drawer-navigation)
+	- [3. Data Management:](#3-data-management)
+		- [3.1 Understand how to define data using Room entities](#31-understand-how-to-define-data-using-room-entities)
+		- [3.2 Be able to access Room database with data access object (DAO)](#32-be-able-to-access-room-database-with-data-access-object-dao)
+		- [3.3 Know how to observe and respond to changing data using LiveData](#33-know-how-to-observe-and-respond-to-changing-data-using-livedata)
+		- [3.4 Understand how to use a Repository to mediate data operations](#34-understand-how-to-use-a-repository-to-mediate-data-operations)
+		- [3.5 Be able to read and parse raw resources or asset files](#35-be-able-to-read-and-parse-raw-resources-or-asset-files)
+		- [3.6 Be able to create persistent Preference data from user input](#36-be-able-to-create-persistent-preference-data-from-user-input)
+		- [3.7 Understand how to change the behavior of the app based on user preferences](#37understand-how-to-change-the-behavior-of-the-app-based-on-user-preferences)
+	- [4. Debugging:](4-#debugging)
+	- [5. Testing：](#5-testing)
+		- [5.1 Espresso:](#51-espresso)
+		- [5.2 UI Automator:](#52-ui-automator)
+		- [5.3 JUnit:](#53-junit)
 
 ## 1. Android Core:
 
@@ -417,15 +417,15 @@ if (mScheduler!=null){
 }
 ```
 
-## User interface:
+## 2. User interface:
 
-### Understand the Android activity lifecycle
+### 2.1 Understand the Android activity lifecycle
 
-### Be able to create an Activity that displays a Layout
+### 2.2 Be able to create an Activity that displays a Layout
 
-### [Be able to construct a UI with ConstraintLayout](https://developer.android.com/training/constraint-layout/)
+### [2.3 Be able to construct a UI with ConstraintLayout](https://developer.android.com/training/constraint-layout/)
 
-### [Understand how to create a custom View class and add it to a Layout](https://developer.android.com/guide/topics/ui/custom-components)
+### [2.4 Understand how to create a custom View class and add it to a Layout](https://developer.android.com/guide/topics/ui/custom-components)
 
 [CodeLab](https://codelabs.developers.google.com/codelabs/advanced-android-training-custom-view-from-scratch/index.html)
 
@@ -522,13 +522,13 @@ if (attrs! = null) {
 
 
 
-### [Know how to implement a custom app theme](https://developer.android.com/guide/topics/ui/look-and-feel/themes)
+### [2.5 Know how to implement a custom app theme](https://developer.android.com/guide/topics/ui/look-and-feel/themes)
 
 
 
 [CodeLab](https://codelabs.developers.google.com/codelabs/android-training-drawables-styles-and-themes/index.html)
 
-### [Be able to add accessibility hooks to a custom View](https://developer.android.com/guide/topics/ui/accessibility/custom-views)
+### [2.6 Be able to add accessibility hooks to a custom View](https://developer.android.com/guide/topics/ui/accessibility/custom-views)
 
 ```java
 @Override
@@ -543,11 +543,11 @@ public boolean onKeyUp (int keyCode, KeyEvent event) {
 
 ```
 
-### Know how to apply content descriptions to views for accessibility
+### 2.7 Know how to apply content descriptions to views for accessibility
 
 关爱残障人士从我做起
 
-### [Understand how to display items in a RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview)
+### [2.8 Understand how to display items in a RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview)
 
 Activity:
 
@@ -636,7 +636,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
 
-### Be able to bind local data to a RecyclerView list using the Paging library
+### 2.9 Be able to bind local data to a RecyclerView list using the Paging library
 
 ![](https://codelabs.developers.google.com/codelabs/android-paging/img/511a702ae4af43cd.png)
 
@@ -722,7 +722,7 @@ public class ConcertAdapter
 If the source is from Network or other sources, you should create and inherent the Datasource.class and Datasource.Factory.class yoruself
 
 
-### [Know how to implement menu-based navigation](https://developer.android.com/guide/topics/ui/menus)
+### [2.10 Know how to implement menu-based navigation](https://developer.android.com/guide/topics/ui/menus)
 
 Menu item:
 ```xml
@@ -770,7 +770,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
 
 
-### [Understand how to implement drawer navigation](https://developer.android.com/training/implementing-navigation/nav-drawer)
+### [2.11 Understand how to implement drawer navigation](https://developer.android.com/training/implementing-navigation/nav-drawer)
 
 ```
 dependencies {
@@ -892,13 +892,13 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## DataManagement:
+## 3. Data Management:
 
 [AppArchitecture](https://developer.android.com/jetpack/docs/guide)
 
 ![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
 
-### Understand how to define data using Room entities
+### 3.1 Understand how to define data using Room entities
 
 ```java
 @Entity(tableName = "word_table")
@@ -915,7 +915,7 @@ public class Word {
 }
 ```
 
-### Be able to access Room database with data access object (DAO)
+### 3.2 Be able to access Room database with data access object (DAO)
 
 Database:
 ```java
@@ -960,9 +960,9 @@ public interface WordDao {
 }
 ```
 
-### [Know how to observe and respond to changing data using LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+### [3.3 Know how to observe and respond to changing data using LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 
-### Understand how to use a Repository to mediate data operations
+### 3.4 Understand how to use a Repository to mediate data operations
 
 ```java
 public class WordRepository {
@@ -1001,9 +1001,9 @@ public class WordRepository {
 }
 ```
 
-### [Be able to read and parse raw resources or asset files](https://www.google.com)
+### [3.5 Be able to read and parse raw resources or asset files](https://www.google.com)
 
-### Be able to create persistent Preference data from user input
+### 3.6 Be able to create persistent Preference data from user input
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -1051,7 +1051,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-### Understand how to change the behavior of the app based on user preferences
+### 3.7 Understand how to change the behavior of the app based on user preferences
 
 AppSettings:
 
@@ -1117,11 +1117,11 @@ Boolean switchPref = sharedPref.getBoolean
            (SettingsActivity.KEY_PREF_EXAMPLE_SWITCH, false);
 ```
 
-## Debugging:
+## 4. Debugging:
 
 略
 
-## [Testing](https://developer.android.com/training/testing/fundamentals)：
+## [5. Testing](https://developer.android.com/training/testing/fundamentals)：
 
 ![](https://developer.android.com/images/training/testing/testing-workflow.png)
 
@@ -1129,7 +1129,7 @@ Boolean switchPref = sharedPref.getBoolean
 
 
 
-### [Espresso](https://developer.android.com/training/testing/espresso):
+### [5.1 Espresso](https://developer.android.com/training/testing/espresso):
 
 ![](https://developer.android.com/images/training/testing/espresso-cheatsheet.png)
 
@@ -1177,11 +1177,11 @@ dependencies {
 
 * [Web Basic](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/WebBasicSample/app/src/androidTest/java/com/example/android/testing/espresso/web/BasicSample/WebViewActivityTest.java)
 
-### UI Automator:
+### 5.2 UI Automator:
 
 https://github.com/googlesamples/android-testing/tree/master/ui/uiautomator/BasicSample
 
-### JUnit:
+### 5.3 JUnit:
 
 CheatSheet: https://www.roguewave.com/sites/rw/files/resources/junit-cheat-sheet_0.pdf
 
