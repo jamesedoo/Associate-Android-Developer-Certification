@@ -5,25 +5,25 @@ Source ：https://developers.google.com/training/certification/associate-android
 
 # Table of Contents:
 
-- [Google-AAD](#google-aad)
-	- [Android Core:](#android-core)
-		- [Understand the architecture of the Android system](#understand-the-architecture-of-the-android-system)
-			- [Android Basics](#android-basics)
-			- [Four app components:](#four-app-components)
-		- [Be able to describe the basic building blocks of an Android app](#be-able-to-describe-the-basic-building-blocks-of-an-android-app)
-		- [Know how to build and run an Android app](#know-how-to-build-and-run-an-android-app)
-		- [Display simple messages in a popup using a Toast or a Snackbar](#display-simple-messages-in-a-popup-using-a-toast-or-a-snackbar)
-			- [Toast:](#toast)
-			- [Snackbar:](#snackbar)
-		- [Be able to display a message outside your app's UI using Notifications](#be-able-to-display-a-message-outside-your-apps-ui-using-notifications)
-			- [Create Channel:](#create-channel)
-			- [Builder:](#builder)
-			- [Show:](#show)
-		- [Understand how to localize an app](#understand-how-to-localize-an-app)
-			- [Doc](#doc)
-			- [Codelab](#codelab)
-		- [Be able to schedule a background task using JobScheduler](#be-able-to-schedule-a-background-task-using-jobscheduler)
-			- [CodeLab](#codelab-1)
+- [Associate Android Developer Certification](#associate-android-developer-certification)
+	- [1. Android Core:](#1-android-core)
+		- [1.1 Understand the architecture of the Android system](#11-understand-the-architecture-of-the-android-system)
+			- [1.1.1 Android Basics](#111-android-basics)
+			- [1.1.2 Four app components:](#112-four-app-components)
+		- [1.2 Be able to describe the basic building blocks of an Android app](#12-be-able-to-describe-the-basic-building-blocks-of-an-android-app)
+		- [1.3 Know how to build and run an Android app](#13-know-how-to-build-and-run-an-android-app)
+		- [1.4 Display simple messages in a popup using a Toast or a Snackbar](#14-display-simple-messages-in-a-popup-using-a-toast-or-a-snackbar)
+			- [1.4.1 Toast:](#141-toast)
+			- [1.4.2 Snackbar:](#142-snackbar)
+		- [1.5 Be able to display a message outside your app's UI using Notifications](#15-be-able-to-display-a-message-outside-your-apps-ui-using-notifications)
+			- [1.5.1 Create Channel:](#151-create-channel)
+			- [1.5.2 Builder:](#152-builder)
+			- [1.5.3 Show:](#153-show)
+		- [1.6 Understand how to localize an app](#16-understand-how-to-localize-an-app)
+			- [1.6.1 Doc](#161-doc)
+			- [1.6.2 Codelab](#162-codelab)
+		- [1.7 Be able to schedule a background task using JobScheduler](#17-be-able-to-schedule-a-background-task-using-jobscheduler)
+			- [1.7.1 CodeLab](#171-codelab)
 	- [User interface:](#user-interface)
 		- [Understand the Android activity lifecycle](#understand-the-android-activity-lifecycle)
 		- [Be able to create an Activity that displays a Layout](#be-able-to-create-an-activity-that-displays-a-layout)
@@ -50,14 +50,13 @@ Source ：https://developers.google.com/training/certification/associate-android
 		- [UI Automator:](#ui-automator)
 		- [JUnit:](#junit)
 
+## 1. Android Core:
 
-## Android Core:
+### 1.1 Understand the architecture of the Android system
 
-### Understand the architecture of the Android system
+#### [1.1.1 Android Basics](https://developer.android.com/guide/components/fundamentals)
 
-#### [Android Basics](https://developer.android.com/guide/components/fundamentals)
-
-#### Four app components:
+#### 1.1.2 Four app components:
 
 * [Activities](https://developer.android.com/guide/components/activities/intro-activities)
 
@@ -270,7 +269,7 @@ public class SampleContentProvider extends ContentProvider {
 
 Unlike activities, services, and broadcast receivers, content providers are not activated by intents. Rather, they are activated when targeted by a request from a ContentResolver.
 
-### Be able to describe the basic building blocks of an Android app
+### 1.2 Be able to describe the basic building blocks of an Android app
 
 * [App components](https://developer.android.com/guide/components/fundamentals#Components)
 
@@ -278,11 +277,11 @@ Unlike activities, services, and broadcast receivers, content providers are not 
 
 * [App resources](https://developer.android.com/guide/components/fundamentals#Resources)
 
-### [Know how to build and run an Android app](https://developer.android.com/training/basics/firstapp/creating-project)
+### [1.3 Know how to build and run an Android app](https://developer.android.com/training/basics/firstapp/creating-project)
 
-### Display simple messages in a popup using a Toast or a Snackbar
+### 1.4 Display simple messages in a popup using a Toast or a Snackbar
 
-#### [Toast](https://developer.android.com/guide/topics/ui/notifiers/toasts):
+#### [1.4.1 Toast](https://developer.android.com/guide/topics/ui/notifiers/toasts):
 
 ```java
 Context context = getApplicationContext();
@@ -293,7 +292,7 @@ Toast toast = Toast.makeText(context, text, duration);
 toast.show();
 ```
 
-#### [Snackbar](https://developer.android.com/reference/android/support/design/widget/Snackbar):
+#### [1.4.2 Snackbar](https://developer.android.com/reference/android/support/design/widget/Snackbar):
 
 ```java
 Snackbar mySnackbar = Snackbar.make(findViewById(R.id.myCoordinatorLayout),
@@ -304,7 +303,7 @@ mySnackbar.show();
 
 
 
-### [Be able to display a message outside your app's UI using Notifications](https://developer.android.com/guide/topics/ui/notifiers/notifications)
+### [1.5 Be able to display a message outside your app's UI using Notifications](https://developer.android.com/guide/topics/ui/notifiers/notifications)
 
 ```
 dependencies {
@@ -312,7 +311,7 @@ dependencies {
 }
 ```
 
-#### Create Channel:
+#### 1.5.1 Create Channel:
 
 ```java
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -328,7 +327,7 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 }
 ```
 
-#### Builder:
+#### 1.5.2 Builder:
 
 ```java
 NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
@@ -337,7 +336,7 @@ NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNE
         .setContentText(textContent)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 ```
-#### Show:
+#### 1.5.3 Show:
 
 ```java
 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
@@ -347,15 +346,15 @@ notificationManager.notify(notificationId, builder.build());
 ```
 
 
-### Understand how to localize an app
+### 1.6 Understand how to localize an app
 
-#### [Doc](https://developer.android.com/guide/topics/resources/localization)
+#### [1.6.1 Doc](https://developer.android.com/guide/topics/resources/localization)
 
-#### [Codelab](https://codelabs.developers.google.com/codelabs/advanced-android-training-use-locale/index.html#0)
+#### [1.6.2 Codelab](https://codelabs.developers.google.com/codelabs/advanced-android-training-use-locale/index.html#0)
 
-### Be able to schedule a background task using JobScheduler
+### 1.7 Be able to schedule a background task using JobScheduler
 
-#### [CodeLab](https://codelabs.developers.google.com/codelabs/android-training-job-scheduler/index.html)
+#### [1.7.1 CodeLab](https://codelabs.developers.google.com/codelabs/android-training-job-scheduler/index.html)
 
 ```xml
 <service
