@@ -13,50 +13,51 @@ Associate Android Developer Certification Cheat Sheet
 https://developers.google.com/training/certification/associate-android-developer/study-guide/
 
 ## Topics List
-- [Associate Android Developer Certification](#associate-android-developer-certification)
-	- [1. Android Core:](#1-android-core)
-		- [1.1 Understand the architecture of the Android system](#11-understand-the-architecture-of-the-android-system)
-		- [1.2 Be able to describe the basic building blocks of an Android app](#12-be-able-to-describe-the-basic-building-blocks-of-an-android-app)
-		- [1.3 Know how to build and run an Android app](#13-know-how-to-build-and-run-an-android-app)
-		- [1.4 Display simple messages in a popup using a Toast or a Snackbar](#14-display-simple-messages-in-a-popup-using-a-toast-or-a-snackbar)
-			- [1.4.1 Toast:](#141-toast)
-			- [1.4.2 Snackbar:](#142-snackbar)
-		- [1.5 Be able to display a message outside your app's UI using Notifications](#15-be-able-to-display-a-message-outside-your-apps-ui-using-notifications)
-			- [1.5.1 Create Channel:](#151-create-channel)
-			- [1.5.2 Builder:](#152-builder)
-			- [1.5.3 Show:](#153-show)
-		- [1.6 Understand how to localize an app](#16-understand-how-to-localize-an-app)
-			- [1.6.1 Doc](#161-doc)
-			- [1.6.2 Codelab](#162-codelab)
-		- [1.7 Be able to schedule a background task using JobScheduler](#17-be-able-to-schedule-a-background-task-using-jobscheduler)
-			- [1.7.1 CodeLab](#171-codelab)
-	- [2. User Interface:](#2-user-interface)
-		- [2.1 Understand the Android activity lifecycle](#21-understand-the-android-activity-lifecycle)
-			- [2.1.1 Activity lifecycle](#211-activity-lifecycle)
-			- [2.1.2 Fragment lifecycle](#212-fragment-lifecycle)
-		- [2.2 Be able to create an Activity that displays a Layout](#22-be-able-to-create-an-activity-that-displays-a-layout)
-		- [2.3 Be able to construct a UI with ConstraintLayout](#23-be-able-to-construct-a-ui-with-constraintlayout)
-		- [2.4 Understand how to create a custom View class and add it to a Layout](#24-understand-how-to-create-a-custom-view-class-and-add-it-to-a-layout)
-		- [2.5 Know how to implement a custom app theme](#25-know-how-to-implement-a-custom-app-theme)
-		- [2.6 Be able to add accessibility hooks to a custom View](#26-be-able-to-add-accessibility-hooks-to-a-custom-view)
-		- [2.7 Know how to apply content descriptions to views for accessibility](#27-know-how-to-apply-content-descriptions-to-views-for-accessibility)
-		- [2.8 Understand how to display items in a RecyclerView](#28-understand-how-to-display-items-in-a-recyclerview)
-		- [2.9 Be able to bind local data to a RecyclerView list using the Paging library](#29-be-able-to-bind-local-data-to-a-recyclerview-list-using-the-paging-library)
-		- [2.10 Know how to implement menu-based navigation](#210-know-how-to-implement-menu-based-navigation)
-		- [2.11 Understand how to implement drawer navigation](#211-understand-how-to-implement-drawer-navigation)
-	- [3. Data Management:](#3-data-management)
-		- [3.1 Understand how to define data using Room entities](#31-understand-how-to-define-data-using-room-entities)
-		- [3.2 Be able to access Room database with data access object (DAO)](#32-be-able-to-access-room-database-with-data-access-object-dao)
-		- [3.3 Know how to observe and respond to changing data using LiveData](#33-know-how-to-observe-and-respond-to-changing-data-using-livedata)
-		- [3.4 Understand how to use a Repository to mediate data operations](#34-understand-how-to-use-a-repository-to-mediate-data-operations)
-		- [3.5 Be able to read and parse raw resources or asset files](#35-be-able-to-read-and-parse-raw-resources-or-asset-files)
-		- [3.6 Be able to create persistent Preference data from user input](#36-be-able-to-create-persistent-preference-data-from-user-input)
-		- [3.7 Understand how to change the behavior of the app based on user preferences](#37understand-how-to-change-the-behavior-of-the-app-based-on-user-preferences)
-	- [4. Debugging:](4-#debugging)
-	- [5. Testing：](#5-testing)
-		- [5.1 Espresso:](#51-espresso)
-		- [5.2 UI Automator:](#52-ui-automator)
-		- [5.3 JUnit:](#53-junit)
+
+- [1. Android Core:](#1-android-core)
+	- [1.1 Understand the architecture of the Android system](#11-understand-the-architecture-of-the-android-system)
+	- [1.2 Be able to describe the basic building blocks of an Android app](#12-be-able-to-describe-the-basic-building-blocks-of-an-android-app)
+	- [1.3 Know how to build and run an Android app](#13-know-how-to-build-and-run-an-android-app)
+	- [1.4 Display simple messages in a popup using a Toast or a Snackbar](#14-display-simple-messages-in-a-popup-using-a-toast-or-a-snackbar)
+		- [1.4.1 Toast](#141-toast)
+		- [1.4.2 Snackbar](#142-snackbar)
+	- [1.5 Be able to display a message outside your app's UI using Notifications](#15-be-able-to-display-a-message-outside-your-apps-ui-using-notifications)
+		- [1.5.1 Builder](#151-builder)
+		- [1.5.2 Set Channel](#152-set-channel)
+		- [1.5.3 Show](#153-show)
+	- [1.6 Understand how to localize an app](#16-understand-how-to-localize-an-app)
+	- [1.7 Be able to schedule a background task using WorkManager](#17-be-able-to-schedule-a-background-task-using-workmanager)
+		- [1.7.1 CodeLab](#171-codelab)
+		- [1.7.2 Worker](#172-worker)
+		- [1.7.3 Work Request](#173-work-request)
+		- [1.7.4. Work Manager](#174-work-manager)
+- [2. User Interface:](#2-user-interface)
+	- [2.1 Understand the Android activity lifecycle](#21-understand-the-android-activity-lifecycle)
+		- [2.1.1 Activity lifecycle](#211-activity-lifecycle)
+		- [2.1.2 Fragment lifecycle](#212-fragment-lifecycle)
+	- [2.2 Be able to create an Activity that displays a Layout](#22-be-able-to-create-an-activity-that-displays-a-layout)
+	- [2.3 Be able to construct a UI with ConstraintLayout](#23-be-able-to-construct-a-ui-with-constraintlayout)
+	- [2.4 Understand how to create a custom View class and add it to a Layout](#24-understand-how-to-create-a-custom-view-class-and-add-it-to-a-layout)
+	- [2.5 Know how to implement a custom app theme](#25-know-how-to-implement-a-custom-app-theme)
+	- [2.6 Be able to add accessibility hooks to a custom View](#26-be-able-to-add-accessibility-hooks-to-a-custom-view)
+	- [2.7 Know how to apply content descriptions to views for accessibility](#27-know-how-to-apply-content-descriptions-to-views-for-accessibility)
+	- [2.8 Understand how to display items in a RecyclerView](#28-understand-how-to-display-items-in-a-recyclerview)
+	- [2.9 Be able to bind local data to a RecyclerView list using the Paging library](#29-be-able-to-bind-local-data-to-a-recyclerview-list-using-the-paging-library)
+	- [2.10 Know how to implement menu-based navigation](#210-know-how-to-implement-menu-based-navigation)
+	- [2.11 Understand how to implement drawer navigation](#211-understand-how-to-implement-drawer-navigation)
+- [3. Data Management:](#3-data-management)
+	- [3.1 Understand how to define data using Room entities](#31-understand-how-to-define-data-using-room-entities)
+	- [3.2 Be able to access Room database with data access object (DAO)](#32-be-able-to-access-room-database-with-data-access-object-dao)
+	- [3.3 Know how to observe and respond to changing data using LiveData](#33-know-how-to-observe-and-respond-to-changing-data-using-livedata)
+	- [3.4 Understand how to use a Repository to mediate data operations](#34-understand-how-to-use-a-repository-to-mediate-data-operations)
+	- [3.5 Be able to read and parse raw resources or asset files](#35-be-able-to-read-and-parse-raw-resources-or-asset-files)
+	- [3.6 Be able to create persistent Preference data from user input](#36-be-able-to-create-persistent-preference-data-from-user-input)
+	- [3.7 Understand how to change the behavior of the app based on user preferences](#37understand-how-to-change-the-behavior-of-the-app-based-on-user-preferences)
+- [4. Debugging:](4-#debugging)
+- [5. Testing：](#5-testing)
+	- [5.1 Espresso:](#51-espresso)
+	- [5.2 UI Automator:](#52-ui-automator)
+	- [5.3 JUnit:](#53-junit)
 		
 ## Topic Descriptions
 ### 1. Android Core:
@@ -92,117 +93,86 @@ Snackbar.make(
 
 
 #### [1.5 Be able to display a message outside your app's UI using Notifications](https://developer.android.com/guide/topics/ui/notifiers/notifications)
-
 ```
+val core_version = "1.6.0"
 dependencies {
-    implementation "com.android.support:support-compat:28.0.0"
+    implementation("androidx.core:core-ktx:$core_version")
 }
 ```
 
-##### 1.5.1 Create Channel:
-
-```java
-if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-    CharSequence name = getString(R.string.channel_name);
-    String description = getString(R.string.channel_description);
-    int importance = NotificationManager.IMPORTANCE_DEFAULT;
-    NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-    channel.setDescription(description);
-    // Register the channel with the system; you can't change the importance
-    // or other notification behaviors after this
-    NotificationManager notificationManager = getSystemService(NotificationManager.class);
-    notificationManager.createNotificationChannel(channel);
-}
-```
-
-##### 1.5.2 Builder:
-
-```java
-NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+##### 1.5.1 Builder
+```kotlin
+var builder = NotificationCompat.Builder(this, CHANNEL_ID)
         .setSmallIcon(R.drawable.notification_icon)
         .setContentTitle(textTitle)
         .setContentText(textContent)
-        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-```
-##### 1.5.3 Show:
-
-```java
-NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-
-// notificationId is a unique int for each notification that you must define
-notificationManager.notify(notificationId, builder.build());
+        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 ```
 
-
-#### 1.6 Understand how to localize an app
-
-##### [1.6.1 Doc](https://developer.android.com/guide/topics/resources/localization)
-
-##### [1.6.2 Codelab](https://codelabs.developers.google.com/codelabs/advanced-android-training-use-locale/index.html#0)
-
-#### 1.7 Be able to schedule a background task using JobScheduler
-
-##### [1.7.1 CodeLab](https://codelabs.developers.google.com/codelabs/android-training-job-scheduler/index.html)
-
-```xml
-<service
-    android:name=".NotificationJobService"
-    android:enabled="true"
-    android:exported="true"
-    android:permission="android.permission.BIND_JOB_SERVICE" />
-```
-
-JobService:
-
-```java
-public class NotificationJobService extends JobService {
-
-    @Override
-    public boolean onStartJob(JobParameters params) {
-        //Create the notification channel
-        createNotificationChannel();
-        NotificationTask task=new NotificationTask();
-        task.doInBackground();
-        return true;//return false because the job is finished here
+##### 1.5.2 Set Channel
+```kotlin
+private fun createNotificationChannel() {
+    // Create the NotificationChannel, but only on API 26+ because
+    // the NotificationChannel class is new and not in the support library
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val name = getString(R.string.channel_name)
+        val descriptionText = getString(R.string.channel_description)
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+            description = descriptionText
+        }
+        // Register the channel with the system
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
-
-
-    @Override
-    public boolean onStopJob(JobParameters params) {
-        return true;//if job fails, reschedule the job instead of drop
-    }
-
 }
+```
+
+##### 1.5.3 Show
+```kotlin
+with(NotificationManagerCompat.from(this)) {
+    // notificationId is a unique int for each notification that you must define
+    notify(notificationId, builder.build())
+}
+```
+
+
+#### [1.6 Understand how to localize an app](https://developer.android.com/guide/topics/resources/localization)
+
+#### [1.7 Be able to schedule a background task using WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager/basics)
+
+##### [1.7.1 CodeLab](https://developer.android.com/codelabs/android-workmanager?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-6-pathway-1%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fandroid-workmanager#11)
+
+##### 1.7.2 Worker
+```kotlin
+class UploadWorker(appContext: Context, workerParams: WorkerParameters):
+       Worker(appContext, workerParams) {
+   override fun doWork(): Result {
+
+       // Do the work here--in this case, upload the images.
+       uploadImages()
+
+       // Indicate whether the work finished successfully with the Result
+       return Result.success()
+   }
+}
+```
+
+##### 1.7.3 Work Request
+```kotlin
+val uploadWorkRequest: WorkRequest =
+   OneTimeWorkRequestBuilder<UploadWorker>()
+       .build()
 
 ```
 
-JobScheduler:
+##### 1.7.4 Work Manager
+```kotlin
+WorkManager
+    .getInstance(myContext)
+    .enqueue(uploadWorkRequest)
 
-```java
-private JobScheduler mScheduler;
-private static final int JOB_ID = 0;
-public void scheduleJob(){
-        int selectedNetworkOption=JobInfo.NETWORK_TYPE_NONE;
-        mScheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
-        ComponentName serviceName = new ComponentName(getPackageName(),
-        NotificationJobService.class.getName());
-        JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceName);
-        builder.setRequiredNetworkType(selectedNetworkOption);
-        builder.setRequiresDeviceIdle(mDeviceIdleSwitch.isChecked());
-        builder.setRequiresCharging(mDeviceChargingSwitch.isChecked());
-        builder.setOverrideDeadline(seekBarInteger * 1000);//过了ddl就不run你的job了
-        //Schedule the job and notify the user
-        JobInfo myJobInfo = builder.build();
-mScheduler.schedule(myJobInfo);
-}
-
-public void cancelJobs(View view) {
-if (mScheduler!=null){
-    mScheduler.cancelAll();
-    mScheduler = null;
-    Toast.makeText(this, "Jobs cancelled", Toast.LENGTH_SHORT).show();
-}
-}
 ```
 
 ### 2. User interface:
