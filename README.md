@@ -177,15 +177,16 @@ WorkManager
 
 ### 2. User interface:
 
-#### [2.1 Understand the Android activity lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle)
+#### 2.1 Understand the Android activity lifecycle
 
-##### 2.1.1 Activity lifecycle
+##### [2.1.1 Activity lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle)
 
-![lifecycle](https://developer.android.com/guide/components/images/activity_lifecycle.png)
+![activity](https://developer.android.com/guide/components/images/activity_lifecycle.png)
 
-##### 2.1.2 Fragment lifecycle
+##### [2.1.2 Fragment lifecycle](https://developer.android.com/guide/fragments/lifecycle)
 
-![](https://developer.android.com/images/fragment_lifecycle.png)
+![fragment2](https://developer.android.com/static/images/guide/fragments/fragment-view-lifecycle.png)
+![fragment1](https://developer.android.com/images/fragment_lifecycle.png)
 
 #### 2.2 Be able to create an Activity that displays a Layout
 
