@@ -52,12 +52,19 @@ https://developers.google.com/training/certification/associate-android-developer
 	- [3.4 Understand how to use a Repository to mediate data operations](#34-understand-how-to-use-a-repository-to-mediate-data-operations)
 	- [3.5 Be able to read and parse raw resources or asset files](#35-be-able-to-read-and-parse-raw-resources-or-asset-files)
 	- [3.6 Be able to create persistent Preference data from user input](#36-be-able-to-create-persistent-preference-data-from-user-input)
-	- [3.7 Understand how to change the behavior of the app based on user preferences](#37understand-how-to-change-the-behavior-of-the-app-based-on-user-preferences)
+	- [3.7 Understand how to change the behavior of the app based on user preferences](#37-understand-how-to-change-the-behavior-of-the-app-based-on-user-preferences)
 - [4. Debugging:](4-#debugging)
+	- [4.1 Understand the basic debugging techniques available in Android Studio](#41-understand-the-basic-debugging-techniques-available-in-android-studio)
+	- [4.2 Know how to debug and fix issues with an app's functional behavior and usability](#42-know-how-to-debug-and-fix-issues-with-an-apps-functional-behavior-and-usability)
+	- [4.3 Be able to use the System Log to output debug information](#43-be-able-to-use-the-system-log-to-output-debug-information)
+	- [4.4 Understand how to use breakpoints in Android Studio](#44-understand-how-to-use-breakpoints-in-android-studio)
+	- [4.5 Know how to inspect variables using Android Studio](#45-know-how-to-inspect-variables-using-android-studio)
 - [5. Testing：](#5-testing)
-	- [5.1 Espresso:](#51-espresso)
-	- [5.2 UI Automator:](#52-ui-automator)
-	- [5.3 JUnit:](#53-junit)
+	- [5.1 Thoroughly understand the fundamentals of testing](51-thoroughly-understand-the-fundamentals-of-testing)
+	- [5.2 Be able to write useful local JUnit tests](#52-be-able-to-write-useful-local-junit-tests)
+	- [5.3 Understand the Espresso UI test framework](#53-understand-the-espresso-ui-test-framework)
+	- [5.4 Know how to write useful automated Android tests](#54-know-how-to-write-useful-automated-android-tests)
+	
 		
 ## Topic Descriptions
 ### 1. Android Core:
@@ -886,7 +893,11 @@ Boolean switchPref = sharedPref.getBoolean
 
 ### 4. Debugging:
 
-略
+#### 4.1 Understand the basic debugging techniques available in Android Studio
+#### 4.2 Know how to debug and fix issues with an apps functional behavior and usability
+#### 4.3 Be able to use the System Log to output debug information
+#### 4.4 Understand how to use breakpoints in Android Studio
+#### 4.5 Know how to inspect variables using Android Studio
 
 ### [5. Testing](https://developer.android.com/training/testing/fundamentals)：
 
@@ -895,8 +906,19 @@ Boolean switchPref = sharedPref.getBoolean
 ![](https://developer.android.com/images/training/testing/pyramid_2x.png)
 
 
+#### 5.1 Thoroughly understand the fundamentals of testing
 
-#### [5.1 Espresso](https://developer.android.com/training/testing/espresso):
+#### 5.2 Be able to write useful local JUnit tests
+
+CheatSheet: https://www.roguewave.com/sites/rw/files/resources/junit-cheat-sheet_0.pdf
+
+mockito: https://www.jianshu.com/p/a3b59fad17e6
+
+* [Basic](https://github.com/googlesamples/android-testing/tree/master/unit/BasicSample/app/src/test/java/com/example/android/testing/unittesting/BasicSample)
+
+* [Service](https://github.com/googlesamples/android-testing/blob/master/integration/ServiceTestRuleSample/app/src/androidTest/java/com/example/android/testing/ServiceTestRuleSample/LocalServiceTest.java)
+
+#### [5.3 Understand the Espresso UI test framework](https://developer.android.com/training/testing/espresso):
 
 ![](https://developer.android.com/images/training/testing/espresso-cheatsheet.png)
 
@@ -944,16 +966,7 @@ dependencies {
 
 * [Web Basic](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/WebBasicSample/app/src/androidTest/java/com/example/android/testing/espresso/web/BasicSample/WebViewActivityTest.java)
 
-#### 5.2 UI Automator:
+#### 5.4 Know how to write useful automated Android tests
 
 https://github.com/googlesamples/android-testing/tree/master/ui/uiautomator/BasicSample
 
-#### 5.3 JUnit:
-
-CheatSheet: https://www.roguewave.com/sites/rw/files/resources/junit-cheat-sheet_0.pdf
-
-mockito: https://www.jianshu.com/p/a3b59fad17e6
-
-* [Basic](https://github.com/googlesamples/android-testing/tree/master/unit/BasicSample/app/src/test/java/com/example/android/testing/unittesting/BasicSample)
-
-* [Service](https://github.com/googlesamples/android-testing/blob/master/integration/ServiceTestRuleSample/app/src/androidTest/java/com/example/android/testing/ServiceTestRuleSample/LocalServiceTest.java)
