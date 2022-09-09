@@ -177,7 +177,7 @@ WorkManager
 
 ### 2. User interface:
 
-#### 2.1 Understand the Android activity lifecycle
+#### [2.1 Understand the Android activity lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle)
 
 ##### 2.1.1 Activity lifecycle
 
