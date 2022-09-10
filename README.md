@@ -540,6 +540,7 @@ interface UserDao {
 ![](https://developer.android.com/images/training/testing/espresso-cheatsheet.png)
 #### 5.4 Know how to write useful automated Android tests
 
+#### Example:
 * [Basic Test](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/BasicSample/app/src/androidTest/java/com/example/android/testing/espresso/BasicSample/ChangeTextBehaviorTest.java)
 
 * [Custom matcher](https://github.com/googlesamples/android-testing/tree/master/ui/espresso/CustomMatcherSample/app/src/androidTest/java/com/example/android/testing/espresso/CustomMatcherSample)
