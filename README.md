@@ -205,207 +205,100 @@ WorkManager
 
 [codelab](https://developer.android.com/codelabs/advanced-android-kotlin-training-custom-views#3)
 
-#### [2.5 Know how to implement a custom app theme](https://developer.android.com/guide/topics/ui/look-and-feel/themes)
+#### [2.5 Know how to implement a custom app theme](https://developer.android.com/develop/ui/views/theming/themes)
 
-[codelab](https://codelabs.developers.google.com/codelabs/android-training-drawables-styles-and-themes/index.html)
+[codelab](https://developer.android.com/codelabs/basic-android-kotlin-training-change-app-theme#2)
 
 #### [2.6 Be able to add accessibility hooks to a custom View](https://developer.android.com/guide/topics/ui/accessibility/custom-views)
 
-```java
-@Override
-public boolean onKeyUp (int keyCode, KeyEvent event) {
-    if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
-        currentValue--;
-        sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED);
-        return true;
+```kotlin
+override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
+    return when(keyCode) {
+        KeyEvent.KEYCODE_DPAD_LEFT -> {
+            currentValue--
+            sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED)
+            true
+        }
+        ...
     }
-    ...
 }
-
 ```
 
-#### 2.7 Know how to apply content descriptions to views for accessibility
-
-关爱残障人士从我做起
+#### [2.7 Know how to apply content descriptions to views for accessibility](https://developer.android.com/guide/topics/ui/accessibility/apps)
 
 #### [2.8 Understand how to display items in a RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview)
+[codelab](https://developer.android.com/courses/pathways/android-basics-kotlin-unit-2-pathway-3#codelab-https://developer.android.com/codelabs/basic-android-kotlin-training-recyclerview-scrollable-list)
 
-Activity:
-
-```java
-public class MyActivity extends Activity {
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_activity);
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(myDataset);
-        recyclerView.setAdapter(mAdapter);
-    }
-    // ...
-}
-```
-
-Adapter.java:
-
-```java
-
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private String[] mDataset;
+adapter
+```kotlin
+class ItemAdapter(
+    private val context: Context,
+    private val dataset: List<Affirmation>
+) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public TextView textView;
-        public MyViewHolder(TextView v) {
-            super(v);
-            textView = v;
-        }
+    // you provide access to all the views for a data item in a view holder.
+    // Each data item is just an Affirmation object.
+    class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        val textView: TextView = view.findViewById(R.id.item_title)
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(String[] myDataset) {
-        mDataset = myDataset;
-    }
-
-    // Create new views (invoked by the layout manager)
-    @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    /**
+     * Create new views (invoked by the layout manager)
+     */
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_text_view, parent, false);
-        ...
-        MyViewHolder vh = new MyViewHolder(v);
-        return vh;
+        val adapterLayout = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item, parent, false)
+
+        return ItemViewHolder(adapterLayout)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
-    @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        holder.textView.setText(mDataset[position]);
-
+    /**
+     * Replace the contents of a view (invoked by the layout manager)
+     */
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val item = dataset[position]
+        holder.textView.text = context.resources.getString(item.stringResourceId)
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
-    @Override
-    public int getItemCount() {
-        return mDataset.length;
-    }
+    /**
+     * Return the size of your dataset (invoked by the layout manager)
+     */
+    override fun getItemCount() = dataset.size
 }
-
 ```
 
+activity
+```kotlin
+class MainActivity : AppCompatActivity() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
+        // Initialize data.
+        val myDataset = Datasource().loadAffirmations()
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.adapter = ItemAdapter(this, myDataset)
+
+        // Use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true)
+    }
+}
+```
 
 #### 2.9 Be able to bind local data to a RecyclerView list using the Paging library
-
-![](https://codelabs.developers.google.com/codelabs/android-paging/img/511a702ae4af43cd.png)
-
-```java
-@Dao
-public interface ConcertDao {
-    // The Integer type parameter tells Room to use a PositionalDataSource
-    // object, with position-based loading under the hood.
-    @Query("SELECT * FROM concerts ORDER BY date DESC")
-    DataSource.Factory<Integer, Concert> concertsByDate();
-}
-
-public class ConcertViewModel extends ViewModel {
-    private ConcertDao concertDao;
-    public final LiveData<PagedList<Concert>> concertList;
-
-    public ConcertViewModel(ConcertDao concertDao) {
-        this.concertDao = concertDao;
-        concertList = new LivePagedListBuilder<>(
-            concertDao.concertsByDate(), /* page size */ 50).build();
-    }
-}
-
-public class ConcertActivity extends AppCompatActivity {
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ConcertViewModel viewModel =
-                ViewModelProviders.of(this).get(ConcertViewModel.class);
-        RecyclerView recyclerView = findViewById(R.id.concert_list);
-        ConcertAdapter adapter = new ConcertAdapter();
-        viewModel.concertList.observe(this, 
- new Observer<PagedList<FavSong>>() {
-            @Override
-            public void onChanged(PagedList<FavSong> favSongs) {
-
-                    adapter.submitList(favSongs);
-
-            }
-        });
-        recyclerView.setAdapter(adapter);
-    }
-}
-
-public class ConcertAdapter
-        extends PagedListAdapter<Concert, ConcertViewHolder> {
-    protected ConcertAdapter() {
-        super(DIFF_CALLBACK);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ConcertViewHolder holder,
-            int position) {
-        Concert concert = getItem(position);
-        if (concert != null) {
-            holder.bindTo(concert);
-        } else {
-            // Null defines a placeholder item - PagedListAdapter automatically
-            // invalidates this row when the actual object is loaded from the
-            // database.
-            holder.clear();
-        }
-    }
-
-    private static DiffUtil.ItemCallback<Concert> DIFF_CALLBACK =
-            new DiffUtil.ItemCallback<Concert>() {
-        // Concert details may have changed if reloaded from the database,
-        // but ID is fixed.
-        @Override
-        public boolean areItemsTheSame(Concert oldConcert, Concert newConcert) {
-            return oldConcert.getId() == newConcert.getId();
-        }
-
-        @Override
-        public boolean areContentsTheSame(Concert oldConcert,
-                Concert newConcert) {
-            return oldConcert.equals(newConcert);
-        }
-    };
-}
-```
-
-If the source is from Network or other sources, you should create and inherent the Datasource.class and Datasource.Factory.class yoruself
-
+[codelab](https://developer.android.com/codelabs/android-paging?index=..%2F..%2Findex#3)
+[paging3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
+[paging2](https://developer.android.com/topic/libraries/architecture/paging)
 
 #### [2.10 Know how to implement menu-based navigation](https://developer.android.com/guide/topics/ui/menus)
 
-Menu item:
+menu layout
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
@@ -422,37 +315,34 @@ Menu item:
 </menu>
 ```
 
-Activity:
-
-```java
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.game_menu, menu);
-    return true;
+create option menu
+```kotlin
+override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    val inflater: MenuInflater = menuInflater
+    inflater.inflate(R.menu.game_menu, menu)
+    return true
 }
-
-@Override
-public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle item selection
-    switch (item.getItemId()) {
-        case R.id.new_game:
-            newGame();
-            return true;
-        case R.id.help:
-            showHelp();
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
-    }
-}
-
 ```
 
-
+handling click events
+```kotlin
+override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    // Handle item selection
+    return when (item.itemId) {
+        R.id.new_game -> {
+            newGame()
+            true
+        }
+        R.id.help -> {
+            showHelp()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
+}
+```
 
 #### [2.11 Understand how to implement drawer navigation](https://developer.android.com/training/implementing-navigation/nav-drawer)
-
 ```
 dependencies {
   implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -460,8 +350,7 @@ dependencies {
 }
 ```
 
-layout:
-
+layout
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Use DrawerLayout as root container for activity -->
@@ -491,8 +380,7 @@ layout:
 </android.support.v4.widget.DrawerLayout>
 ```
 
-menu:
-
+menu
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
@@ -517,8 +405,7 @@ menu:
 </menu>
 ```
 
-HeaderLayout：
-
+headerlayout
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -539,37 +426,18 @@ HeaderLayout：
 </LinearLayout>
 ```
 
-Activity:
+activity
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+    setContentView(R.layout.activity_main)
 
-```java
-public class MainActivity extends AppCompatActivity {
+    ...
 
-    private DrawerLayout drawerLayout;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        drawerLayout = findViewById(R.id.drawer_layout);
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        menuItem.setChecked(true);
-                        // close drawer when item is tapped
-                        drawerLayout.closeDrawers();
-
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
-
-                        return true;
-                    }
-                });
-    }
+    val navHostFragment =
+        supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+    val navController = navHostFragment.navController
+    findViewById<NavigationView>(R.id.nav_view)
+        .setupWithNavController(navController)
 }
 ```
 
