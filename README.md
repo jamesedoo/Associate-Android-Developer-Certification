@@ -100,6 +100,8 @@ Snackbar.make(
 
 
 #### [1.5 Be able to display a message outside your app's UI using Notifications](https://developer.android.com/guide/topics/ui/notifiers/notifications)
+[codelab](https://developer.android.com/codelabs/advanced-android-kotlin-training-notifications#3)
+
 ```
 val core_version = "1.6.0"
 dependencies {
@@ -201,106 +203,11 @@ WorkManager
 
 #### [2.4 Understand how to create a custom View class and add it to a Layout](https://developer.android.com/guide/topics/ui/custom-components)
 
-[CodeLab](https://codelabs.developers.google.com/codelabs/advanced-android-training-custom-view-from-scratch/index.html)
-
-```java
-public class DialView extends View {
-
-    private static int SELECTION_COUNT = 4; // Total number of selections.
-    private float mWidth;                   // Custom view width.
-    private float mHeight;                  // Custom view height.
-    private Paint mTextPaint;               // For text in the view.
-    private Paint mDialPaint;               // For dial circle in the view.
-    private float mRadius;                  // Radius of the circle.
-    private int mActiveSelection;           // The active selection.
-    // String buffer for dial labels and float for ComputeXY result.
-    private final StringBuffer mTempLabel = new StringBuffer(8);
-    private final float[] mTempResult = new float[2];
-    public DialView(Context context) {
-        super(context);
-        init();
-    }
-
-    public DialView(Context context,  @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init();
-    }
-
-    public DialView(Context context,  @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        // Draw the dial.
-        canvas.drawCircle(mWidth / 2, mHeight / 2, mRadius, mDialPaint);
-        // Draw the text labels.
-        final float labelRadius = mRadius + 20;
-        StringBuffer label = mTempLabel;
-        for (int i = 0; i < SELECTION_COUNT; i++) {
-            float[] xyData = computeXYForPosition(i, labelRadius);
-            float x = xyData[0];
-            float y = xyData[1];
-            label.setLength(0);
-            label.append(i);
-            canvas.drawText(label, 0, label.length(), x, y, mTextPaint);
-        }
-        // Draw the indicator mark.
-        final float markerRadius = mRadius - 35;
-        float[] xyData = computeXYForPosition(mActiveSelection,
-                markerRadius);
-        float x = xyData[0];
-        float y = xyData[1];
-        canvas.drawCircle(x, y, 20, mTextPaint);
-    }
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        // Calculate the radius from the width and height.
-        mWidth = w;
-        mHeight = h;
-        mRadius = (float) (Math.min(mWidth, mHeight) / 2 * 0.8);
-    }
-}
-```
-
-Custom Attribute:
-
-attrs.xml
-```xml
-
-<resources>
-    <declare-styleable name="DialView">
-        <attr name="fanOnColor" format="reference|color" />
-        <attr name="fanOffColor" format="reference|color" />
-    </declare-styleable>
-</resources>
-```
-get Attributes
-```java
-// Get the custom attributes (fanOnColor and fanOffColor) if available.
-if (attrs! = null) {
-    TypedArray typedArray = getContext().obtainStyledAttributes(attrs,
-                            R.styleable.DialView,
-                            0, 0);
-    // Set the fan on and fan off colors from the attribute values.
-    mFanOnColor = typedArray.getColor(R.styleable.DialView_fanOnColor,
-                    mFanOnColor);
-    mFanOffColor = typedArray.getColor(R.styleable.DialView_fanOffColor,
-                    mFanOffColor);
-    typedArray.recycle();
-```
-
-
-
+[codelab](https://developer.android.com/codelabs/advanced-android-kotlin-training-custom-views#3)
 
 #### [2.5 Know how to implement a custom app theme](https://developer.android.com/guide/topics/ui/look-and-feel/themes)
 
-
-
-[CodeLab](https://codelabs.developers.google.com/codelabs/android-training-drawables-styles-and-themes/index.html)
+[codelab](https://codelabs.developers.google.com/codelabs/android-training-drawables-styles-and-themes/index.html)
 
 #### [2.6 Be able to add accessibility hooks to a custom View](https://developer.android.com/guide/topics/ui/accessibility/custom-views)
 
