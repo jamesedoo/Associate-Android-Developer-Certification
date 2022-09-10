@@ -343,6 +343,7 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean {
 ```
 
 #### [2.11 Understand how to implement drawer navigation](https://developer.android.com/training/implementing-navigation/nav-drawer)
+[example](https://medium.com/@syahrizalakbar1/membuat-navigation-drawer-di-kotlin-b3869c1cbfb9)
 ```
 dependencies {
   implementation 'com.android.support:appcompat-v7:28.0.0'
