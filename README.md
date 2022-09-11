@@ -617,10 +617,10 @@ interface UserDao {
 #### 3.5 Be able to read and parse raw resources or asset files
 ?
 
-#### 3.6 Be able to create persistent Preference data from user input
+#### [3.6 Be able to create persistent Preference data from user input](https://developer.android.com/training/data-storage/shared-preferences)
 [codelab](https://developer.android.com/codelabs/basic-android-kotlin-training-preferences-datastore?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-5-pathway-2%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-preferences-datastore#3)
 
-#### 3.7 Understand how to change the behavior of the app based on user preferences
+#### [3.7 Understand how to change the behavior of the app based on user preferences]()
 [codelab](https://developer.android.com/codelabs/basic-android-kotlin-training-preferences-datastore?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-5-pathway-2%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-preferences-datastore#5)
 
 
