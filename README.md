@@ -101,6 +101,7 @@ Snackbar.make(
 
 #### [1.5 Be able to display a message outside your app's UI using Notifications](https://developer.android.com/guide/topics/ui/notifiers/notifications)
 [codelab](https://developer.android.com/codelabs/advanced-android-kotlin-training-notifications#3)
+example exist in work manager codelab, also in [watermeapp](https://github.com/jamesedoo/Associate-Android-Developer-Certification/tree/main/WaterMe/src/main/java/com/example/waterme)
 
 ```
 val core_version = "1.6.0"
@@ -202,8 +203,8 @@ WorkManager
 #### [2.3 Be able to construct a UI with ConstraintLayout](https://developer.android.com/training/constraint-layout/)
 
 #### [2.4 Understand how to create a custom View class and add it to a Layout](https://developer.android.com/guide/topics/ui/custom-components)
-
 [codelab](https://developer.android.com/codelabs/advanced-android-kotlin-training-custom-views#3)
+codelab -> dicoding intermediate custom view
 
 #### [2.5 Know how to implement a custom app theme](https://developer.android.com/develop/ui/views/theming/themes)
 
@@ -225,6 +226,29 @@ override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
 ```
 
 #### [2.7 Know how to apply content descriptions to views for accessibility](https://developer.android.com/guide/topics/ui/accessibility/apps)
+```xml
+<!-- Use string resources for easier localization. -->
+<!-- The en-US value for the following string is "Inspect". -->
+<ImageView
+    ...
+    android:contentDescription="@string/inspect" />
+```
+```kotlin
+data class MovieRating(val title: String, val starRating: Integer)
+
+class MyMovieRatingsAdapter(private val myData: Array<MovieRating>):
+        RecyclerView.Adapter<MyMovieRatingsAdapter.MyRatingViewHolder>() {
+
+    class MyRatingViewHolder(val ratingView: ImageView) :
+            RecyclerView.ViewHolder(ratingView)
+
+    override fun onBindViewHolder(holder: MyRatingViewHolder, position: Int) {
+        val ratingData = myData[position]
+        holder.ratingView.contentDescription = "Movie ${position}: " +
+                "${ratingData.title}, ${ratingData.starRating} stars"
+    }
+}
+```
 
 #### [2.8 Understand how to display items in a RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview)
 [codelab](https://developer.android.com/courses/pathways/android-basics-kotlin-unit-2-pathway-3#codelab-https://developer.android.com/codelabs/basic-android-kotlin-training-recyclerview-scrollable-list)
@@ -291,10 +315,58 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-#### 2.9 Be able to bind local data to a RecyclerView list using the Paging library
-[codelab](https://developer.android.com/codelabs/android-paging?index=..%2F..%2Findex#3)
-[paging3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
-[paging2](https://developer.android.com/topic/libraries/architecture/paging)
+#### [2.9 Be able to bind local data to a RecyclerView list using the Paging library](https://developer.android.com/topic/libraries/architecture/paging)
+codelab -> dicoding intermediate paging 2
+```kotlin
+@Dao
+interface ConcertDao {
+    // The Int type parameter tells Room to use a PositionalDataSource
+    // object, with position-based loading under the hood.
+    @Query("SELECT * FROM concerts ORDER BY date DESC")
+    fun concertsByDate(): DataSource.Factory<Int, Concert>
+}
+
+class ConcertViewModel(concertDao: ConcertDao) : ViewModel() {
+    val concertList: LiveData<PagedList<Concert>> =
+            concertDao.concertsByDate().toLiveData(pageSize = 50)
+}
+
+class ConcertActivity : AppCompatActivity() {
+    public override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Use the 'by viewModels()' Kotlin property delegate
+        // from the activity-ktx artifact
+        val viewModel: ConcertViewModel by viewModels()
+        val recyclerView = findViewById(R.id.concert_list)
+        val adapter = ConcertAdapter()
+        viewModel.concertList.observe(this, PagedList(adapter::submitList))
+        recyclerView.setAdapter(adapter)
+    }
+}
+
+class ConcertAdapter() :
+        PagedListAdapter<Concert, ConcertViewHolder>(DIFF_CALLBACK) {
+    fun onBindViewHolder(holder: ConcertViewHolder, position: Int) {
+        val concert: Concert? = getItem(position)
+
+        // Note that "concert" is a placeholder if it's null.
+        holder.bindTo(concert)
+    }
+
+    companion object {
+        private val DIFF_CALLBACK = object :
+                DiffUtil.ItemCallback<Concert>() {
+            // Concert details may have changed if reloaded from the database,
+            // but ID is fixed.
+            override fun areItemsTheSame(oldConcert: Concert,
+                    newConcert: Concert) = oldConcert.id == newConcert.id
+
+            override fun areContentsTheSame(oldConcert: Concert,
+                    newConcert: Concert) = oldConcert == newConcert
+        }
+    }
+}
+```
 
 #### [2.10 Know how to implement menu-based navigation](https://developer.android.com/guide/topics/ui/menus)
 
@@ -343,7 +415,9 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean {
 ```
 
 #### [2.11 Understand how to implement drawer navigation](https://developer.android.com/training/implementing-navigation/nav-drawer)
-[example](https://medium.com/@syahrizalakbar1/membuat-navigation-drawer-di-kotlin-b3869c1cbfb9)
+nav graph based
+
+[example](https://medium.com/@syahrizalakbar1/membuat-navigation-drawer-di-kotlin-b3869c1cbfb9) intent based
 ```
 dependencies {
   implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -440,6 +514,34 @@ override fun onCreate(savedInstanceState: Bundle?) {
     findViewById<NavigationView>(R.id.nav_view)
         .setupWithNavController(navController)
 }
+```
+or 
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.appBarMain.toolbar)
+
+        binding.appBarMain.fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+            ), drawerLayout
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+    }
 ```
 
 ### [3. Data Management:](https://developer.android.com/jetpack/docs/guide)
@@ -542,22 +644,31 @@ interface UserDao {
 #### 5.4 Know how to write useful automated Android tests
 
 #### Example:
-* [Basic Test](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/BasicSample/app/src/androidTest/java/com/example/android/testing/espresso/BasicSample/ChangeTextBehaviorTest.java)
+- [lemonadeapp test](https://github.com/jamesedoo/Associate-Android-Developer-Certification/tree/main/LemonadeApp/src/androidTest/java/com/example/lemonade)
+matching view and perform click
+- [waterme test](https://github.com/jamesedoo/Associate-Android-Developer-Certification/tree/main/WaterMe/src/main/java/com/example/waterme)
+activityRule, notification test, ui device test(press home, open notif, etc.), click notif
+- instrumentation test
+```kotlin
+@RunWith(AndroidJUnit4::class)
+class CalculatorTests {
 
-* [Custom matcher](https://github.com/googlesamples/android-testing/tree/master/ui/espresso/CustomMatcherSample/app/src/androidTest/java/com/example/android/testing/espresso/CustomMatcherSample)
+   @get:Rule()
+   val activity = ActivityScenarioRule(MainActivity::class.java)
 
-* [Data Adapter](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/DataAdapterSample/app/src/androidTest/java/com/example/android/testing/espresso/DataAdapterSample/LongListActivityTest.java)
+   @Test
+   fun calculate_20_percent_tip() {
+       onView(withId(R.id.cost_of_service_edit_text))
+           .perform(typeText("50.00"))
 
-* [Idleing Resource](https://github.com/googlesamples/android-testing/tree/master/ui/espresso/IdlingResourceSample/app/src)
+       onView(withId(R.id.calculate_button)).perform(click())
 
-* [Intents Basic](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/IntentsBasicSample/app/src/androidTest/java/com/example/android/testing/espresso/BasicSample/DialerActivityTest.java)
-
-* [Intents Advance](https://github.com/googlesamples/android-testing/tree/master/ui/espresso/IntentsAdvancedSample/app/src/androidTest/java/com/example/android/testing/espresso/intents/AdvancedSample)
-
-* [Multi Process](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/MultiProcessSample/app/src/androidTest/java/com/example/android/testing/espresso/multiprocesssample/ExampleInstrumentedTest.java)
-
-* [Multi Window](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/MultiWindowSample/app/src/androidTest/java/com/example/android/testing/espresso/MultiWindowSample/MultiWindowTest.java)
-
-* [RecyclerView](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/RecyclerViewSample/app/src/androidTest/java/com/example/android/testing/espresso/RecyclerViewSample/RecyclerViewSampleTest.java)
-
-* [Web Basic](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/WebBasicSample/app/src/androidTest/java/com/example/android/testing/espresso/web/BasicSample/WebViewActivityTest.java)
+       onView(withId(R.id.tip_result))
+           .check(matches(withText(containsString("$10.00"))))
+   }
+}
+```
+- [dogglers test](https://github.com/jamesedoo/Associate-Android-Developer-Certification/tree/main/DogglersApp/src/androidTest/java/com/example/dogglers)
+recyclerview item match test, scroll to position, swipe up/left, item count
+- adapter mock
+![](https://developer.android.com/static/codelabs/android-basics-kotlin-affirmations-test-lists-and-adapters/img/f81a27f5c1cf055e.png)
