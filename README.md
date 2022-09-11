@@ -672,3 +672,34 @@ class CalculatorTests {
 recyclerview item match test, scroll to position, swipe up/left, item count
 - adapter mock
 ![](https://developer.android.com/static/codelabs/android-basics-kotlin-affirmations-test-lists-and-adapters/img/f81a27f5c1cf055e.png)
+- viewmodel test
+```kotlin
+class ViewModelTests {
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
+
+    @Test
+    fun quantity_twelve_cupcakes() {
+        val viewModel = OrderViewModel()
+        viewModel.quantity.observeForever {}
+        viewModel.setQuantity(12)
+        assertEquals(12, viewModel.quantity.value)
+    }
+
+    @Test
+    fun price_twelve_cupcakes() {
+        val viewModel = OrderViewModel()
+        viewModel.price.observeForever {}
+        viewModel.setQuantity(12)
+        assertEquals("IDR27.00", viewModel.price.value)
+    }
+}
+```
+- [lunchtray test](https://github.com/jamesedoo/Associate-Android-Developer-Certification/tree/main/LunchTray/src/androidTest/java/com/example/lunchtray)
+navHost, menu content, order flow(entree, side, accompaniment), snackbar test
+
+- [amphibians test](https://github.com/jamesedoo/Associate-Android-Developer-Certification/tree/main/Amphibians/src/androidTest/java/com/example/amphibians)
+waitforview
+
+- [forage test](https://github.com/jamesedoo/Associate-Android-Developer-Certification/tree/main/ForageApp/src/androidTest/java/com/example/forage)
+replaceText, doesnotexist
