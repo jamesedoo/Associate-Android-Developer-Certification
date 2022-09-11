@@ -634,10 +634,11 @@ interface UserDao {
 
 ### [5. Testing](https://developer.android.com/training/testing/fundamentals)：
 
-![](https://developer.android.com/images/training/testing/testing-workflow.png)
+![](https://developer.android.com/static/training/testing/fundamentals/test-scopes.png)
+![](https://developer.android.com/static/training/testing/fundamentals/instru-vs-local.png)
 ![](https://developer.android.com/images/training/testing/pyramid_2x.png)
 
-#### 5.1 Thoroughly understand the fundamentals of testing
+#### [5.1 Thoroughly understand the fundamentals of testing](https://developer.android.com/codelabs/advanced-android-kotlin-training-testing-basics#0)
 #### 5.2 Be able to write useful local JUnit tests
 #### [5.3 Understand the Espresso UI test framework](https://developer.android.com/training/testing/espresso):
 ![](https://developer.android.com/images/training/testing/espresso-cheatsheet.png)
