@@ -103,6 +103,8 @@ Snackbar.make(
 [codelab](https://developer.android.com/codelabs/advanced-android-kotlin-training-notifications#3)
 example exist in work manager codelab, also in [watermeapp](https://github.com/jamesedoo/Associate-Android-Developer-Certification/tree/main/WaterMe/src/main/java/com/example/waterme)
 
+[advance notification](https://github.com/googlecodelabs/android-kotlin-notifications)
+
 ```
 val core_version = "1.6.0"
 dependencies {
