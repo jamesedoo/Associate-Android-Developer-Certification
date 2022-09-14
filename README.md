@@ -21,7 +21,7 @@ https://developers.google.com/training/certification/associate-android-developer
 	- [1.4 Display simple messages in a popup using a Toast or a Snackbar](#14-display-simple-messages-in-a-popup-using-a-toast-or-a-snackbar)
 		- [1.4.1 Toast](#141-toast)
 		- [1.4.2 Snackbar](#142-snackbar)
-	- [1.5 Be able to display a message outside your app's UI using Notifications](#15-be-able-to-display-a-message-outside-your-apps-ui-using-notifications)
+	- [1.5 Be able to display a message outside your app's UI using Notifications](#15-be-able-to-display-a-message-outside-your-apps-ui-using-notifications)?
 		- [1.5.1 Builder](#151-builder)
 		- [1.5.2 Set Channel](#152-set-channel)
 		- [1.5.3 Show](#153-show)
@@ -52,7 +52,7 @@ https://developers.google.com/training/certification/associate-android-developer
 	- [3.4 Understand how to use a Repository to mediate data operations](#34-understand-how-to-use-a-repository-to-mediate-data-operations)
 	- [3.5 Be able to read and parse raw resources or asset files](#35-be-able-to-read-and-parse-raw-resources-or-asset-files)
 	- [3.6 Be able to create persistent Preference data from user input](#36-be-able-to-create-persistent-preference-data-from-user-input)
-	- [3.7 Understand how to change the behavior of the app based on user preferences](#37-understand-how-to-change-the-behavior-of-the-app-based-on-user-preferences)
+	- [3.7 Understand how to change the behavior of the app based on user preferences](#37-understand-how-to-change-the-behavior-of-the-app-based-on-user-preferences)?
 - [4. Debugging:](4-#debugging)
 	- [4.1 Understand the basic debugging techniques available in Android Studio](#41-understand-the-basic-debugging-techniques-available-in-android-studio)
 	- [4.2 Know how to debug and fix issues with an app's functional behavior and usability](#42-know-how-to-debug-and-fix-issues-with-an-apps-functional-behavior-and-usability)
