@@ -107,10 +107,10 @@ example exist in work manager codelab, also in [watermeapp](https://github.com/j
 [advance notification](https://github.com/googlecodelabs/android-kotlin-notifications)
 
 steps: 
-pertama di viewmodel, manggil fungsi di NotificationUtils
-di NotificationUtils ada fungsi yang extend dari NotificationManager, di sini builder dibikin, 
-builder butuh channel, channel dibikin di fragment
-di fragment onCreateView, ngatur channelnya mau kaya gimana
+- pertama di viewmodel, manggil fungsi di NotificationUtils
+- di NotificationUtils ada fungsi yang extend dari NotificationManager, di sini builder dibikin, 
+- builder butuh channel, channel dibikin di fragment
+- di fragment onCreateView, ngatur channelnya mau kaya gimana
 
 ```
 val core_version = "1.6.0"
